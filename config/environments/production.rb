@@ -1,7 +1,13 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
 
-  # Code is not reloaded between requests.
+  ######################################################################
+  # Settings specified here will take precedence over those in config/application.rb
+  ######################################################################
+
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = false
+
+  # Code is not reloaded between requests
   config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -10,7 +16,7 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  # Full error reports are disabled and caching is turned on.
+  # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
@@ -22,48 +28,33 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  # Compress JavaScripts and CSS
+  config.assets.js_compressor = Uglifier.new(harmony: true)
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
+  # Do not fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
-  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # Generate digests for assets URLs
+  config.assets.digest = true
 
-  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server
+  config.action_controller.asset_host = "//#{ENV['ASSET_HOST']}"
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
-
-  # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
-  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
-
-  # Use the lowest log level to ensure availability of diagnostic information
-  # when problems arise.
-  config.log_level = :debug
-
-  # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
-
-  # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies
+  config.force_ssl = true
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "user-list-exercise_#{Rails.env}"
-
-  config.action_mailer.perform_caching = false
+  # config.active_job.queue_name_prefix = "TreflersAdmin_#{Rails.env}"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -76,12 +67,11 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
+  # Use default logging formatter so that PID and timestamp are not suppressed
   config.log_formatter = ::Logger::Formatter.new
 
-  # Use a different logger for distributed setups.
-  # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  # Prepend all log lines with the following tags.
+  config.log_tags = [ :request_id ]
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
@@ -89,6 +79,10 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  # Do not dump schema after migrations.
+  # See everything in the log (default is :info)
+  config.log_level = :info
+
+  # Do not dump schema after migrations
   config.active_record.dump_schema_after_migration = false
+
 end

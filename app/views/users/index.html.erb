@@ -1,0 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_pack_tag 'application' %>
+  <%= stylesheet_link_tag :user_index, media: 'all' %>
+<% end %>
+
+<%= react_component 'UserListContainer',
+                    userProps: @user_props %>
