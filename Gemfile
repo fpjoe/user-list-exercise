@@ -25,7 +25,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'awesome_print'
 
 # For bootstrap
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 
 # For jQuery
 gem 'jquery-rails', '~> 4.3'
