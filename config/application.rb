@@ -19,6 +19,11 @@ module UserListExercise
     # the framework and any gems in your application.
     ######################################################################
 
+    # Custom directories with classes and modules you want to be autoloadable.
+    # config.autoload_paths += %W(#{config.root}/extras)
+    # The '**/' allows us to have subdirs within the given dir and
+    # not reference class names any differently
+    config.autoload_paths += Dir[ Rails.root.join('app', 'services', '**/') ]
     config.autoload_paths += Dir[ Rails.root.join('lib') ]
     config.eager_load_paths += Dir[ Rails.root.join('lib') ]
 

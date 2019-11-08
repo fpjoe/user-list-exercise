@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class UsersController < ApplicationController
 
   def index
     load_user_props
