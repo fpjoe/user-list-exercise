@@ -7,18 +7,44 @@ import Users from '../components/Users';
 class UsersContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.state =
-      Object.assign(
-        this.defaultState(),
-        { usersPage: '1' }
-      );
+    this.state = this.defaultState();
   }
 
   defaultState() {
     return {
+	  usersInfo: this.setDefaultShowPasswordValues(this.props.userListInfo.usersInfo),
       getUsersMode: 'view',
-	  getUsersError: ''
+	  getUsersError: '',
+	  usersPage: '1'
     };
+  }
+
+  setDefaultShowPasswordValues(usersInfo) {
+	var users = [];
+    for ( const user of usersInfo.users ) {
+      users.push(
+        Object.assign(
+          user,
+          { showPassword: false }
+        )
+	  );
+	}
+	usersInfo.users = users;
+    return usersInfo;
+  }
+
+  toggleShowPasswordValue(usersInfo,userId) {
+	var users = [];
+    for ( const user of usersInfo.users ) {
+      users.push(
+        Object.assign(
+          user,
+          { showPassword: ( user.id == userId ? !user.showPassword : user.showPassword ) }
+        )
+	  );
+	}
+	usersInfo.users = users;
+    return usersInfo;
   }
 
   queryGetUsersInfo() {
@@ -55,7 +81,7 @@ class UsersContainer extends React.Component {
   handleGetUsersInfoSuccess = (result) => {
     this.setState({
       getUsersMode: 'view',
-	  usersInfo: result.usersInfo
+	  usersInfo: this.setDefaultShowPasswordValues(result.usersInfo)
     });
   }
 
@@ -66,13 +92,21 @@ class UsersContainer extends React.Component {
     });
   }
 
+  handleTogglePasswordLinkClick = (userId) => {
+    this.setState({
+      usersInfo: this.toggleShowPasswordValue(this.state.usersInfo,userId)
+    });
+  }
+  
   render() {
     return (
-	  <Users userListInfo={this.props.userListInfo}
+	  <Users usersInfo={this.state.usersInfo}
+	         photoHeight={this.props.userListInfo.photoHeight}
    	         getUsersMode={this.state.getUsersMode}
    	         getUsersError={this.state.getUsersError}
 			 usersPage={this.state.usersPage}
-			 handlePaginationLinkClick={this.handlePaginationLinkClick} />
+			 handlePaginationLinkClick={this.handlePaginationLinkClick}
+			 handleTogglePasswordLinkClick={this.handleTogglePasswordLinkClick} />
     );
   };
 };

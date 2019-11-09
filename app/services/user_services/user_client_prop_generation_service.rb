@@ -66,6 +66,10 @@ class UserClientPropGenerationService
     }
   end
 
+  def prop_photo_height
+    100
+  end
+
   private
 
   def load_raw_users

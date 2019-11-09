@@ -14,15 +14,22 @@ class Users extends React.Component {
   	this.props.handlePaginationLinkClick(page);
   }
 
+  handleTogglePasswordLinkClick = (userId) => {
+  	this.props.handleTogglePasswordLinkClick(userId);
+  }
+
   render() {
 
-    const { userListInfo,
+    const { usersInfo,
+		    photoHeight,
   		    getUsersMode,
 		    getUsersError,
- 		    usersPage } = this.props;
+		    usersPage } = this.props;
 
-	const listUsers = userListInfo.usersInfo.users.map((user, index) => (
+	const listUsers = usersInfo.users.map((user, index) => (
 	  <User user={user}
+	        photoHeight={photoHeight}
+            handleTogglePasswordLinkClick={this.handleTogglePasswordLinkClick}
 		    key={index} />
 	));
 
@@ -31,12 +38,11 @@ class Users extends React.Component {
 
         <div id="user_header">
           <div id="user_header_left_col">
-            {pluralize(userListInfo.usersInfo.numTotal,'user')}.
+            {pluralize(usersInfo.numTotal,'user')}.
           </div>
           <div id="user_header_right_col">
-    		<PaginationSummaryNumResults paginationInfo={userListInfo.usersInfo}
-     		                             entityName="user"
-			                             marginBottom={0} />
+    		<PaginationSummaryNumResults paginationInfo={usersInfo}
+     		                             entityName="user" />
           </div>
         </div>
 
@@ -56,7 +62,7 @@ class Users extends React.Component {
         </table>
 
         <div id="user_footer">
-  		  <PaginationSummaryPagingLinks paginationInfo={userListInfo.usersInfo}
+  		  <PaginationSummaryPagingLinks paginationInfo={usersInfo}
  		                                currentPage={usersPage}
 		                                linkIdPrefix="users"
 		                                mode={getUsersMode}
@@ -78,11 +84,13 @@ Users.defaultProps = {
 };
 	 
 Users.propTypes = {
-  userListInfo: PropTypes.object.isRequired,
+  usersInfo: PropTypes.object.isRequired,
+  photoHeight: PropTypes.number.isRequired,
   getUsersMode: PropTypes.string,
   getUsersError: PropTypes.string,
   usersPage: PropTypes.string,
-  handlePaginationLinkClick: PropTypes.func.isRequired
+  handlePaginationLinkClick: PropTypes.func.isRequired,
+  handleTogglePasswordLinkClick: PropTypes.func.isRequired
 };
 
 export default Users;

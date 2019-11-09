@@ -27,7 +27,7 @@ class PaginationSummaryNumResults extends React.Component {
 
 PaginationSummaryNumResults.defaultProps = {
   marginTop: 0,
-  marginBottom: 20
+  marginBottom: 0
 };
 
 PaginationSummaryNumResults.propTypes = {

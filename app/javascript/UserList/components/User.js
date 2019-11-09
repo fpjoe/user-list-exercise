@@ -7,14 +7,22 @@ class User extends React.Component {
     super(props);
   }
 
+  handleTogglePasswordLinkClick = (e) => {
+	e.preventDefault();
+	this.props.handleTogglePasswordLinkClick(this.props.user.id);
+  }
+
   render() {
 
-    const { user } = this.props;
+    const { user,
+		    photoHeight } = this.props;
+
+    const fullName = user.surname + ', ' + user.name;
 
 	return (
 	  <tr>
-        <td className="user_list leftmost_column">
-        {user.surname}, {user.name}
+        <td className="user_list leftmost_column" title={fullName}>
+        {truncateText(fullName,20)}
         </td>
         <td className="user_list">
         {user.gender}
@@ -28,11 +36,20 @@ class User extends React.Component {
         <td className="user_list" title={user.email}>
 		{truncateText(user.email,20)}
         </td>
-        <td className="user_list" title={user.password}>
-		{truncateText(user.password,20)}
+        <td className="user_list">
+		{user.showPassword && (
+          <div>
+  		    {user.password}
+          </div>
+		)}
+		<div>
+	      <a href="#" onClick={this.handleTogglePasswordLinkClick}>{user.showPassword ? 'Hide' : 'Show'}</a>
+        </div>
         </td>
         <td className="user_list">
-        {user.photoUrl}
+        <div style={{height: photoHeight}}>
+    	  <a href={user.photoUrl} target="_blank"><img src={user.photoUrl} height={photoHeight} /></a>
+        </div>
         </td>
 	  </tr>
     );
@@ -40,7 +57,9 @@ class User extends React.Component {
 };
 
 User.propTypes = {
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  photoHeight: PropTypes.number.isRequired,
+  handleTogglePasswordLinkClick: PropTypes.func.isRequired
 };
 
 export default User;

@@ -1,0 +1,79 @@
+/*
+**************************************
+MAIN PAGE STRUCTURE AND COMMON ELEMENTS
+**************************************
+*/
+
+.container {
+  margin-left: 0px !important;
+}
+
+.main_page_container {
+  padding: 5px 20px 20px 20px;
+  font-size: larger;
+  width: 1250px;
+}
+
+.footer_container {
+  padding: 20px;
+  white-space: nowrap;
+}
+
+.page_title {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1em;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  width: 1150px;
+}
+
+.sep {
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+/*
+**************************************
+TEXT DECORATION
+**************************************
+*/
+
+.error {
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.notice_inline {
+  font-weight: bold;
+  color: #006200;
+}
+
+.text_right {
+  margin-left: 10px;
+}
+
+.text_way_right {
+  margin-left: 30px;
+}
+
+/*
+**************************************
+PAGINATION
+**************************************
+*/
+
+.pagination_summary_num_results {
+  font-size: .8em;
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+
+.pagination_summary_paging_links {
+  margin-bottom: 20px;
+}
+
+.pagination_summary_page_selected {
+  font-weight: bold;
+}
