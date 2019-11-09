@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_11_08_000000) do
     t.string "phone"
     t.datetime "birthday"
     t.string "email"
+    t.string "password"
+    t.string "photo_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

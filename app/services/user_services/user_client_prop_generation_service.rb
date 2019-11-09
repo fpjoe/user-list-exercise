@@ -14,6 +14,20 @@ class UserClientPropGenerationService
     @page = options[:page] || nil
   end
 
+  def get_props(props = [])
+    values = {}
+
+    props.each do |prop|
+      if self.respond_to?("prop_#{prop}",true)
+        values[prop.to_sym] = self.send("prop_#{prop}")
+      else
+        raise no_such_prop_error_message(prop)
+      end
+    end
+
+    values
+  end
+
   def get_all_props
     values = {}
 
@@ -22,7 +36,6 @@ class UserClientPropGenerationService
     end
 
     values
-
   end
 
   private
@@ -105,7 +118,9 @@ class UserClientPropGenerationService
         title,
         phone,
         birthday,
-        email
+        email,
+        password,
+        photo_url
       ').
       order('surname asc')
   end
@@ -141,16 +156,23 @@ class UserClientPropGenerationService
 
   def get_props_for_user(info)
     {
-      name:     info.name,
-      surname:  info.surname,
-      gender:   info.gender,
-      region:   info.region,
-      age:      info.age.to_s,
-      title:    info.title,
-      phone:    info.phone,
-      birthday: DisplayUtils.date_display(info.birthday),
-      email:    info.email
+      name:      info.name,
+      surname:   info.surname,
+      gender:    info.gender,
+      region:    info.region,
+      age:       info.age.to_s,
+      title:     info.title,
+      phone:     info.phone,
+      birthday:  DisplayUtils.date_display(info.birthday),
+      email:     info.email,
+      password:  info.password,
+      photo_url: info.photo_url
     }
+  end
+
+  def no_such_prop_error_message(prop)
+    "UserClientPropGenerationService: Tried to load prop #{prop} but " +
+    "there is no method defined for that prop in this service"
   end
 
 end
