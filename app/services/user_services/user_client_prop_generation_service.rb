@@ -110,6 +110,7 @@ class UserClientPropGenerationService
     User.
       where(id: raw_user_ids).
       select('
+        id,
         name,
         surname,
         gender,
@@ -129,33 +130,9 @@ class UserClientPropGenerationService
     @raw_users.map(&:id)
   end
 
-  # Sample user:
-# {
-#   "name":"Ducu",
-#   "surname":"Catargi",
-#   "gender":"male",
-#   "region":"Romania",
-#   "age":29,
-#   "title":"mr",
-#   "phone":"(872) 206 1219",
-#   "birthday":{
-#     "dmy":"03\/10\/1990",
-#     "mdy":"10\/03\/1990",
-#     "raw":655012064
-#   },
-#   "email":"ducu_catargi@example.com",
-#   "password":"Catargi90_^",
-#   "credit_card":{
-#     "expiration":"9\/23",
-#     "number":"2542-7836-1731-7055",
-#     "pin":5214,
-#     "security":515
-#   },
-#   "photo":"https:\/\/uinames.com\/api\/photos\/male\/14.jpg"
-# }
-
   def get_props_for_user(info)
     {
+      id:        info.id,
       name:      info.name,
       surname:   info.surname,
       gender:    info.gender,

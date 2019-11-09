@@ -39,6 +39,12 @@ TEXT DECORATION
 **************************************
 */
 
+.error {
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}
+
 .text_right {
   margin-left: 10px;
 }
@@ -73,4 +79,44 @@ PAGINATION
 
 .pagination_summary_page_selected {
   font-weight: bold;
+}
+
+/*
+**************************************
+USERS DISPLAY
+**************************************
+*/
+
+#user_box {
+  border: 1px solid black;
+  padding: 17px 20px 0px 20px;
+}
+#user_header {
+  font-weight: bold;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+#user_header_left_col, #user_header_right_col {
+  display: inline-block;
+}
+#user_header_right_col {
+  font-weight: normal;
+  margin-left: 40px;
+}
+.user_col_header {
+  font-weight: bold;
+  white-space: nowrap;
+}
+td.user_col_header.leftmost_column {
+  padding-left: 0px;
+}
+td.user_list {
+  white-space: nowrap;
+}
+td.user_list.leftmost_column {
+  padding-left: 0px;
+}
+.user_footer {
+  vertical-align: top;
+  padding-bottom: 13px;
 }

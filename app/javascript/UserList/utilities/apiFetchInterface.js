@@ -1,5 +1,4 @@
 import apiFetch from './apiFetch';
-import { reloadPageAfterXSeconds } from './pageLoadUtils';
 
 export function callApiFetch(data) {
   apiFetch({
@@ -10,10 +9,6 @@ export function callApiFetch(data) {
   });
 }
 
-export function handleApiFetchError(data,store,storeErrorKey) {
-  store[storeErrorKey] = data.errors.join(', ');
-  if ( data.errorKey == 'needLogin' ) {
-    reloadPageAfterXSeconds();
-  }
-  return store;
+export function retrieveApiFetchError(data) {
+  return data.errors.join(', ');
 }

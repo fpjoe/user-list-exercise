@@ -12,13 +12,13 @@ class UserListContainer extends React.Component {
 
   render() {
     return (
-      <UserList users={this.state.users} />
+      <UserList userListInfo={this.state.userListInfo} />
     );
   };
 };
 
 UserListContainer.propTypes = {
-  users: PropTypes.object.isRequired
+  userListInfo: PropTypes.object.isRequired
 };
 
 export default UserListContainer;

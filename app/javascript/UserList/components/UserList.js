@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from './Header';
+import UsersContainer from '../containers/UsersContainer';
 
 class UserList extends React.Component {
   constructor(props) {
@@ -8,18 +10,19 @@ class UserList extends React.Component {
 
   render() {
 
-    const { users } = this.props;
+    const { userListInfo } = this.props;
 
     return (
       <div>
-		body here
+        <Header />
+        <UsersContainer userListInfo={userListInfo} />
       </div>
     );
   };
 };
 
 UserList.propTypes = {
-  users: PropTypes.object.isRequired
+  userListInfo: PropTypes.object.isRequired
 };
 
 export default UserList;
