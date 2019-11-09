@@ -1,5 +1,5 @@
 # user-list-exercise
-Exercise: a basic user list using Ruby on Rails and React.
+Exercise: display of a simple list of users using Ruby on Rails, PostgreSQL, and React.
 
 Things I might do next if I had time:
 
