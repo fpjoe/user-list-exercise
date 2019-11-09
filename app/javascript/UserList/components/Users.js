@@ -18,10 +18,16 @@ class Users extends React.Component {
   	this.props.handleTogglePasswordLinkClick(userId);
   }
 
+  handleTogglePhotosLinkClick = (e) => {
+	e.preventDefault();
+	this.props.handleTogglePhotosLinkClick();
+  }
+
   render() {
 
     const { usersInfo,
 		    photoHeight,
+		    showPhotos,
   		    getUsersMode,
 		    getUsersError,
 		    usersPage } = this.props;
@@ -29,6 +35,7 @@ class Users extends React.Component {
 	const listUsers = usersInfo.users.map((user, index) => (
 	  <User user={user}
 	        photoHeight={photoHeight}
+			showPhotos={showPhotos}
             handleTogglePasswordLinkClick={this.handleTogglePasswordLinkClick}
 		    key={index} />
 	));
@@ -40,9 +47,12 @@ class Users extends React.Component {
           <div id="user_header_left_col">
             {pluralize(usersInfo.numTotal,'user')}.
           </div>
-          <div id="user_header_right_col">
+          <div id="user_header_middle_col">
     		<PaginationSummaryNumResults paginationInfo={usersInfo}
      		                             entityName="user" />
+          </div>
+          <div id="user_header_right_col">
+  	        <a href="#" onClick={this.handleTogglePhotosLinkClick} className="toggle_photos_link">{showPhotos ? 'Hide photos' : 'Show photos'}</a>
           </div>
         </div>
 
@@ -50,7 +60,7 @@ class Users extends React.Component {
         <tbody>
         <tr>
           <td className="user_col_header leftmost_column">Name</td>
-          <td className="user_col_header">Gender</td>
+          <td className="user_col_header">Gndr/Age</td>
           <td className="user_col_header">Region</td>
           <td className="user_col_header">Phone</td>
           <td className="user_col_header">Email</td>
@@ -82,15 +92,17 @@ class Users extends React.Component {
 Users.defaultProps = {
   usersPage: '1'
 };
-	 
+
 Users.propTypes = {
   usersInfo: PropTypes.object.isRequired,
   photoHeight: PropTypes.number.isRequired,
+  showPhotos: PropTypes.bool.isRequired,
   getUsersMode: PropTypes.string,
   getUsersError: PropTypes.string,
   usersPage: PropTypes.string,
   handlePaginationLinkClick: PropTypes.func.isRequired,
-  handleTogglePasswordLinkClick: PropTypes.func.isRequired
+  handleTogglePasswordLinkClick: PropTypes.func.isRequired,
+  handleTogglePhotosLinkClick: PropTypes.func.isRequired
 };
 
 export default Users;

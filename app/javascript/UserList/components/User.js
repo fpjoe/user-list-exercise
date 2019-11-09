@@ -15,7 +15,8 @@ class User extends React.Component {
   render() {
 
     const { user,
-		    photoHeight } = this.props;
+		    photoHeight,
+	        showPhotos } = this.props;
 
     const fullName = user.surname + ', ' + user.name;
 
@@ -25,7 +26,8 @@ class User extends React.Component {
         {truncateText(fullName,20)}
         </td>
         <td className="user_list">
-        {user.gender}
+        {user.gender}<br />
+		{user.age}
         </td>
         <td className="user_list">
         {user.region}
@@ -47,9 +49,11 @@ class User extends React.Component {
         </div>
         </td>
         <td className="user_list">
-        <div style={{height: photoHeight}}>
-    	  <a href={user.photoUrl} target="_blank"><img src={user.photoUrl} height={photoHeight} /></a>
-        </div>
+		{showPhotos && (
+          <div style={{height: photoHeight}}>
+    	    <a href={user.photoUrl} target="_blank"><img src={user.photoUrl} height={photoHeight} /></a>
+          </div>
+		)}
         </td>
 	  </tr>
     );
@@ -59,6 +63,7 @@ class User extends React.Component {
 User.propTypes = {
   user: PropTypes.object.isRequired,
   photoHeight: PropTypes.number.isRequired,
+  showPhotos: PropTypes.bool.isRequired,
   handleTogglePasswordLinkClick: PropTypes.func.isRequired
 };
 

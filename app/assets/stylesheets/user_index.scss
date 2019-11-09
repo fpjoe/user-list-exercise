@@ -7,10 +7,10 @@
   margin-bottom: 20px;
   white-space: nowrap;
 }
-#user_header_left_col, #user_header_right_col {
+#user_header_left_col, #user_header_middle_col, #user_header_right_col {
   display: inline-block;
 }
-#user_header_right_col {
+#user_header_middle_col, #user_header_right_col {
   font-weight: normal;
   margin-left: 40px;
 }
@@ -32,6 +32,10 @@ td.user_list.leftmost_column {
   padding-bottom: 13px;
 }
 .toggle_password_link {
+  font-size: .8em;
+  line-height: 1em;
+}
+.toggle_photos_link {
   font-size: .8em;
   line-height: 1em;
 }

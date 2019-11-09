@@ -15,7 +15,8 @@ class UsersContainer extends React.Component {
 	  usersInfo: this.setDefaultShowPasswordValues(this.props.userListInfo.usersInfo),
       getUsersMode: 'view',
 	  getUsersError: '',
-	  usersPage: '1'
+	  usersPage: '1',
+	  showPhotos: true
     };
   }
 
@@ -97,16 +98,24 @@ class UsersContainer extends React.Component {
       usersInfo: this.toggleShowPasswordValue(this.state.usersInfo,userId)
     });
   }
-  
+
+  handleTogglePhotosLinkClick = () => {
+    this.setState({
+	  showPhotos: !this.state.showPhotos
+    });
+  }
+
   render() {
     return (
 	  <Users usersInfo={this.state.usersInfo}
 	         photoHeight={this.props.userListInfo.photoHeight}
+			 showPhotos={this.state.showPhotos}
    	         getUsersMode={this.state.getUsersMode}
    	         getUsersError={this.state.getUsersError}
 			 usersPage={this.state.usersPage}
 			 handlePaginationLinkClick={this.handlePaginationLinkClick}
-			 handleTogglePasswordLinkClick={this.handleTogglePasswordLinkClick} />
+			 handleTogglePasswordLinkClick={this.handleTogglePasswordLinkClick}
+			 handleTogglePhotosLinkClick={this.handleTogglePhotosLinkClick} />
     );
   };
 };
