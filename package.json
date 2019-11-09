@@ -5,6 +5,7 @@
     "@rails/webpacker": "3.5",
     "babel-preset-react": "^6.24.1",
     "humps": "^2.0.1",
+    "js-yaml": "^3.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
