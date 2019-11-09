@@ -54,7 +54,7 @@ class Users extends React.Component {
           <td className="user_col_header">Region</td>
           <td className="user_col_header">Phone</td>
           <td className="user_col_header">Email</td>
-          <td className="user_col_header">PW</td>
+          <td className="user_col_header">Password</td>
           <td className="user_col_header">Photo</td>
         </tr>
         {listUsers}

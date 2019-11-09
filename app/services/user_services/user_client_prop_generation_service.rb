@@ -8,7 +8,7 @@ class UserClientPropGenerationService
   # page, e.g. if you add a prop_frog_color method below, then the return
   # value of that method is available as users.frogColor in React javascript
 
-  USERS_PER_PAGE = 25
+  USERS_PER_PAGE = 20
 
   def initialize(options = {})
     @page = options[:page] || nil

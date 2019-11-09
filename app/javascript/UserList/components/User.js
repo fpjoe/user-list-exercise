@@ -43,7 +43,7 @@ class User extends React.Component {
           </div>
 		)}
 		<div>
-	      <a href="#" onClick={this.handleTogglePasswordLinkClick}>{user.showPassword ? 'Hide' : 'Show'}</a>
+	      <a href="#" onClick={this.handleTogglePasswordLinkClick} className="toggle_password_link">{user.showPassword ? 'Hide pw' : 'Show pw'}</a>
         </div>
         </td>
         <td className="user_list">
