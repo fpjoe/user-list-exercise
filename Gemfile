@@ -25,14 +25,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'awesome_print'
 
 # For bootstrap
-gem 'bootstrap', '~> 4.3.1'
+gem 'bootstrap', '~> 4.1.1'
 
 # For jQuery
 gem 'jquery-rails', '~> 4.3'
 gem 'jquery-ui-rails', '~> 6.0'
 
 # For React
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '~> 3.5.5'
 
 # For React, so that we have the react_component method in Rails views,
 # which was included in the old react-rails and react_on_rails gems,
@@ -48,6 +48,9 @@ gem 'uglifier', '>= 1.3.0'
 
 # For parsing/generating JSON within Ruby
 gem 'json'
+
+# For pagination of results of any kind
+gem 'will_paginate', '~> 3.0'
 
 group :development, :test do
 

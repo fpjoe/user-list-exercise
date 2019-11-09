@@ -38,8 +38,6 @@ class UserClientPropGenerationService
     values
   end
 
-  private
-
   def all_props
     props = []
 
@@ -67,6 +65,8 @@ class UserClientPropGenerationService
       pages:     @pages
     }
   end
+
+  private
 
   def load_raw_users
     @raw_users = User.order(:surname)

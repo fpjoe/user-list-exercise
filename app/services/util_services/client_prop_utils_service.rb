@@ -1,13 +1,5 @@
 class ClientPropUtilsService
 
-  def get_date(datetime)
-    if datetime.blank?
-      nil
-    else
-      DisplayUtils.date_display(datetime)
-    end
-  end
-
   def default_graphql_result(result_fields)
     # Returns, e.g.:
     # {
