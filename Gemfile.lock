@@ -101,7 +101,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     pg (1.1.4)
     popper_js (1.14.5)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-contrib (2.1.0)
       rack (~> 2.0)
@@ -206,7 +206,7 @@ DEPENDENCIES
   json
   meta_request
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rack-livereload
   rack-timeout
   rails (~> 5.2.0)
