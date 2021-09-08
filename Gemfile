@@ -72,7 +72,7 @@ group :development do
   gem 'rack-livereload'
 
   # For enhanced display of server-side exceptions in browser
-  gem 'better_errors', '~> 2.4'
+  gem 'better_errors', '~> 2.9'
 
 end
 
